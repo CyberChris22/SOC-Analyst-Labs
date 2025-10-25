@@ -17,7 +17,7 @@
 
 ## Outcomes
 - Agent `DESKTOP-09QTA75` active in Wazuh dashboard.
-- Collected 5+ logs, including Event ID 4625 (failed logins).
+- Collected 5+ logs (Event ID 4625) as shown in Wazuh analysis.
 - Screenshots:
   - [Agent status in dashboard](./assets/lab1-agent-status.png)
   - [Agent service running on Windows](./assets/lab1-agent-service.png)
