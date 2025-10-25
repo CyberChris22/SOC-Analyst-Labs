@@ -1,48 +1,31 @@
-\# Lab 1: Installing Wazuh Agent on Windows Endpoint and Basic Monitoring
+# Lab 1: Installing Wazuh Agent on Windows Endpoint and Basic Monitoring
 
-\## Objectives
+## Objectives
+- Deploy Wazuh agent on Windows 10.
+- Monitor endpoint logs in Wazuh dashboard.
+- Demonstrate SIEM integration skills.
 
-\- Deploy Wazuh agent on Windows 10.
+## Prerequisites
+- Wazuh server (Amazon Linux) in VirtualBox, accessible at https://192.168.0.73.
+- Windows 10 VM with internet access (bridged network).
 
-\- Monitor endpoint logs in Wazuh dashboard.
+## Steps
+1. Verified existing agent (DESKTOP-09QTA75) active in Wazuh dashboard.
+2. Confirmed agent service running on Windows 10 VM.
+3. Simulated 5 failed logins to generate logs.
+4. Analyzed logs in Wazuh dashboard under Threat Hunting > Events.
 
-\- Demonstrate SIEM integration skills.
+## Outcomes
+- Agent `DESKTOP-09QTA75` active in Wazuh dashboard.
+- Collected 5+ logs, including Event ID 4625 (failed logins).
+- Screenshots:
+  - [Agent status in dashboard](./assets/lab1-agent-status.png)
+  - [Agent service running on Windows](./assets/lab1-agent-service.png)
+  - [Windows Event Viewer logs](./assets/lab1-windows-logs.png)
+  - [Wazuh dashboard logs](./assets/lab1-wazuh-logs.png)
 
-
-
-\## Prerequisites
-
-\- Wazuh server (Amazon Linux) in VirtualBox.
-
-\- Windows 10 VM with internet access (bridged network).
-
-
-
-\## Steps
-
-1\. Generated agent deployment key in Wazuh dashboard.
-
-2\. Installed agent on Windows via PowerShell.
-
-3\. Simulated failed logins to generate logs.
-
-4\. Analyzed logs in Wazuh dashboard.
-
-
-
-\## Outcomes
-
-\- Agent active, logs collected (e.g., Event ID 4625).
-
-\- Screenshots: \[Agent status](./../../assets/lab1-agent-status.png), \[Logs](./../../assets/lab1-logs.png).
-
-
-
-\## Skills Demonstrated
-
-\- Endpoint monitoring
-
-\- SIEM agent deployment
-
-\- Log collection and analysis
+## Skills Demonstrated
+- Endpoint monitoring
+- SIEM agent deployment
+- Log collection and analysis
 
