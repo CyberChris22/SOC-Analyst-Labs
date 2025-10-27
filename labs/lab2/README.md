@@ -38,7 +38,7 @@
 
 \- Screenshots:
 
-&nbsp; - \[Malware alert](./assets/lab2-malware-alert.png)
+  - \[Malware alert](./assets/lab2-malware-alert.png)
 
 
 
