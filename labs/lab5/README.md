@@ -1,4 +1,3 @@
-```
 # Lab 5: Basic Threat Hunting with Queries
 
 ## Overview
@@ -16,30 +15,43 @@ Lab 5 demonstrates basic threat hunting techniques using Sysmon and Wazuh (or lo
 
 ### 1. Sysmon Installation
 
+```powershell
 .\Sysmon64.exe -accepteula -i sysmonconfig.xml
+```
 
 - Sysmon logs process creation, file creation, registry changes, network connections, and more based on the configuration file.
+
 - Verify installation and view the schema:
 
+```powershell
 .\Sysmon64.exe -s
+```
 
 ### 2. PowerShell Event Queries
 
 **List user account creation events**
 
+```powershell
 Get-WinEvent -LogName 'Microsoft-Windows-Sysmon/Operational' | Where-Object {$_.Id -eq 60109}
+```
 
 **List admin group changes**
 
+```powershell
 Get-WinEvent -LogName 'Microsoft-Windows-Sysmon/Operational' | Where-Object {$_.Id -eq 60154}
+```
 
 **List logon events**
 
+```powershell
 Get-WinEvent -LogName 'Security' | Where-Object {$_.Id -eq 4624}
+```
 
 **List DNS timeout events**
 
+```powershell
 Get-WinEvent -LogName 'Microsoft-Windows-DNS-Client/Operational' | Where-Object {$_.Id -eq 61109}
+```
 
 ## Event Analysis & Screenshots
 
@@ -88,4 +100,3 @@ Get-WinEvent -LogName 'Microsoft-Windows-DNS-Client/Operational' | Where-Object 
 
 - [Sysmon Documentation](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 - [Wazuh Documentation](https://documentation.wazuh.com/current/)
-```
