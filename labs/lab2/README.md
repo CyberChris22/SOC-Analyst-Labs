@@ -16,29 +16,31 @@
 
 \- Wazuh server (Amazon Linux) at https://192.168.0.73.
 
-\- Windows 10 VM with Wazuh agent (DESKTOP-09QTA75) installed.
+\- Windows 10 VM with Wazuh agent (`DESKTOP-09QTA75`) installed.
 
 
 
 \## Steps
 
-1\. Configured FIM to monitor C:\\WazuhTest by editing ossec.conf.
+1\. Configured FIM to monitor `C:\\WazuhTest` by editing `ossec.conf`.
 
-2\. Simulated malware by creating and deleting malware\_test.exe in C:\\WazuhTest.
+2\. Simulated malware by creating and deleting `malware\_test.exe` in `C:\\WazuhTest`.
 
-3\. Monitored alerts in Wazuh dashboard under Threat Hunting > Events.
+3\. Monitored alerts in Wazuh dashboard under \*\*Threat Hunting > Events\*\*.
 
 
 
 \## Outcomes
 
-\- Detected "File added to the system" at 17:06:22 CDT.
+\- Detected \*\*“File added to the system”\*\* at 17:06:22 CDT.
 
-\- Detected "File deleted" at 17:09:24 CDT.
+\- Detected \*\*“File deleted”\*\* at 17:09:24 CDT.
 
 \- Screenshots:
 
-  - \[Malware alert](./assets/lab2-malware-alert.png and ./assets/lab2-malware-alert2.png)
+&nbsp; - \[Malware Alert 1](./assets/lab2-malware-alert.png)
+
+&nbsp; - \[Malware Alert 2](./assets/lab2-malware-alert2.png)
 
 
 
@@ -49,4 +51,6 @@
 \- SIEM alert monitoring
 
 \- File integrity monitoring setup
+
+
 
