@@ -85,7 +85,7 @@ Lab 7 demonstrates creating and customizing dashboards and reports in Wazuh for 
    - `lab7-02_WazuhDashboard_FilteredView.png`
    - `lab7-03_Discover_FilteredExport.csv`
    - `lab7-04_CustomDashboard_Widgets.png`
-   - `lab7-05_CustomDashboard_Report.png`
+   - `lab7-05_CustomDashboard_Report.pdf`
 
 
 
