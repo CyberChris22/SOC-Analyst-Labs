@@ -1,0 +1,1066 @@
+_index,_id,_version,_score,_source.agent.ip,_source.agent.name,_source.agent.id,_source.manager.name,_source.data.sca.scan_id,_source.data.sca.check.result,_source.data.sca.check.remediation,_source.data.sca.check.reason,_source.data.sca.check.compliance.cis_csc,_source.data.sca.check.compliance.cis,_source.data.sca.check.description,_source.data.sca.check.id,_source.data.sca.check.title,_source.data.sca.check.rationale,_source.data.sca.check.command,_source.data.sca.type,_source.data.sca.policy,_source.rule.firedtimes,_source.rule.mail,_source.rule.level,_source.rule.pci_dss,_source.rule.tsc,_source.rule.cis_csc,_source.rule.description,_source.rule.groups,_source.rule.id,_source.rule.cis,_source.rule.nist_800_53,_source.rule.gdpr,_source.decoder.name,_source.input.type,_source.@timestamp,_source.location,_source.id,_source.timestamp,_source.data.win.eventdata.data,_source.data.win.system.eventID,_source.data.win.system.eventSourceName,_source.data.win.system.keywords,_source.data.win.system.providerGuid,_source.data.win.system.level,_source.data.win.system.channel,_source.data.win.system.opcode,_source.data.win.system.message,_source.data.win.system.version,_source.data.win.system.systemTime,_source.data.win.system.eventRecordID,_source.data.win.system.threadID,_source.data.win.system.computer,_source.data.win.system.task,_source.data.win.system.processID,_source.data.win.system.severityValue,_source.data.win.system.providerName,_source.data.win.eventdata.subjectLogonId,_source.data.win.eventdata.subjectUserSid,_source.data.win.eventdata.subjectDomainName,_source.data.win.eventdata.privilegeList,_source.data.win.eventdata.subjectUserName,_source.rule.mitre.technique,_source.rule.mitre.id,_source.rule.mitre.tactic,_source.data.win.eventdata.param3,_source.data.win.eventdata.param4,_source.data.win.eventdata.param1,_source.data.win.eventdata.param2,_source.rule.hipaa,_source.rule.info,_source.data.win.eventdata.bucketId,_source.data.win.eventdata.deviceAttributes,_source.data.win.eventdata.updateType,_source.data.win.eventdata.hResult,_source.rule.gpg13,_source.data.sca.score,_source.data.sca.total_checks,_source.data.sca.file,_source.data.sca.policy_id,_source.data.sca.invalid,_source.data.sca.description,_source.data.sca.passed,_source.data.sca.failed,_source.data.win.eventdata.extraInfo,_source.data.extra_data,_source.decoder.parent,_source.full_log,_source.data.sca.check.previous_result,_source.data.win.eventdata.targetLinkedLogonId,_source.data.win.eventdata.impersonationLevel,_source.data.win.eventdata.ipAddress,_source.data.win.eventdata.authenticationPackageName,_source.data.win.eventdata.workstationName,_source.data.win.eventdata.targetLogonId,_source.data.win.eventdata.logonProcessName,_source.data.win.eventdata.logonGuid,_source.data.win.eventdata.targetUserName,_source.data.win.eventdata.keyLength,_source.data.win.eventdata.elevatedToken,_source.data.win.eventdata.processId,_source.data.win.eventdata.processName,_source.data.win.eventdata.ipPort,_source.data.win.eventdata.targetDomainName,_source.data.win.eventdata.targetUserSid,_source.data.win.eventdata.virtualAccount,_source.data.win.eventdata.logonType,_source.data.win.eventdata.subStatus,_source.data.win.eventdata.failureReason,_source.data.win.eventdata.status,_source.data.win.eventdata.binary,_source.data.win.eventdata.addressLength,_source.data.win.eventdata.address,_source.data.win.eventdata.queryName,_source.data.win.eventdata.previousTime,_source.data.win.eventdata.newTime
+wazuh-alerts-4.x-2025.11.14,adZdgZoBBFAMeJ5srPj9,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,1935893949,not applicable,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""PasswordHistorySize""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.,"[""sca""]",19009,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 01:56:24.448",sca,1763106984.164258,"Nov 14, 2025 @ 01:56:24.448", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,XNZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:38.861",EventChannel,1763106758.126526,"Nov 14, 2025 @ 01:52:38.861","hr=0x8007139F, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x8007139F
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable""",0,2025-11-14T13:52:20.6473877Z,2195,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,YdZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Special privileges assigned to new logon.,"[""windows"","" WEF""]",67028, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.183",EventChannel,1763106759.147377,"Nov 14, 2025 @ 01:52:39.183", ,4672, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x8F646
+
+Privileges:		SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege""",0,2025-11-14T13:52:24.1652984Z,36186,644,DESKTOP-MHRV979,12548,592,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x8f646,S-1-5-21-355707830-1189791961-1431070526-1002,DESKTOP-MHRV979,SeSecurityPrivilege     SeTakeOwnershipPrivilege     SeLoadDriverPrivilege     SeBackupPrivilege     SeRestorePrivilege     SeDebugPrivilege     SeSystemEnvironmentPrivilege     SeImpersonatePrivilege     SeDelegateSessionUserImpersonatePrivilege,Chris,"[""Domain Policy Modification""]","[""T1484""]","[""Defense Evasion"",""Privilege Escalation""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,EdbkgJoBBFAMeJ5sVPgm,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:43:57.384",EventChannel,1763099037.103922,"Nov 13, 2025 @ 23:43:57.384", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-14T11:43:55.0894370Z,2237,2692,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,atZegZoBBFAMeJ5sXPjM,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,Windows System error event,"[""windows"",""windows_system"",""system_error""]",61102, , ,"[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 01:57:11.217",EventChannel,1763107031.171121,"Nov 14, 2025 @ 01:57:11.217", ,1801, ,0x8000000000000000,{7d5387b0-cbe0-11da-a94d-0800200c9a66},2,System,0,"""Secure Boot CA/keys need to be updated. This device signature information is included here.
+DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;
+BucketId: b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214
+BucketConfidenceLevel: 
+UpdateType: 0
+HResult: The operation completed successfully.""",0,2025-11-14T13:57:08.3537213Z,2291,2404,DESKTOP-MHRV979,0,3584,ERROR,Microsoft-Windows-TPM-WMI, , , , , , , , , , , , , , ,b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214,BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;,0,0,"[""4.3""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,ZtZcgZoBBFAMeJ5sEvi6,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:54:44.254",EventChannel,1763106884.162664,"Nov 14, 2025 @ 01:54:44.254","2025-11-15T13:51:42Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T13:51:42Z. Reason: RulesEngine.""",0,2025-11-14T13:54:42.3654999Z,2208,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,WdZZgZoBBFAMeJ5s3Pgn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine has completed recovery steps.,"[""windows"",""windows_application""]",60809, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:14.060",EventChannel,1763106734.118233,"Nov 14, 2025 @ 01:52:14.060","SearchIndexer, 2292,U,98, Windows:",302, ,0x80000000000000, ,4,Application,0,"""SearchIndexer (2292,U,98) Windows: The database engine has successfully completed recovery steps.""",0,2025-11-14T13:52:12.1216800Z,2185,0,DESKTOP-MHRV979,3,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,ZdZbgZoBBFAMeJ5sO_jT,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,1935893949, , , , , , , , , , ,summary,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,7,"[""2.2""]","[""CC7.1"",""CC7.2""]", ,SCA summary: CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Score less than 50% (32),"[""sca""]",19004, ,"[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 01:53:41.583",sca,1763106821.161312,"Nov 14, 2025 @ 01:53:41.583", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,32,394,cis_win10_enterprise.yml,cis_win10_enterprise,5,This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 10 Enterprise.,127,262, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,AtbggJoBBFAMeJ5sKfhR,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:15.880",EventChannel,1763098755.66683,"Nov 13, 2025 @ 23:39:15.880","hr=0x8007139F, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x8007139F
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable""",0,2025-11-14T11:39:00.5885653Z,2154,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,A9bggJoBBFAMeJ5sZPgJ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:32.023",EventChannel,1763098772.69018,"Nov 13, 2025 @ 23:39:32.023","2025-11-15T11:38:30Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T11:38:30Z. Reason: RulesEngine.""",0,2025-11-14T11:39:30.6047595Z,2155,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,DdbigJoBBFAMeJ5sKfhT,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:41:29.524",EventChannel,1763098889.96109,"Nov 13, 2025 @ 23:41:29.524","2025-11-15T11:39:28Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T11:39:28Z. Reason: RulesEngine.""",0,2025-11-14T11:41:28.2329330Z,2169,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,AdbfgJoBBFAMeJ5soPiN,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The Windows search service started.,"[""windows"",""windows_application""]",60668, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:38:48.138",EventChannel,1763098728.65347,"Nov 13, 2025 @ 23:38:48.138", ,1003,Windows Search Service,0x80000000000000,{CA4E628D-8567-4896-AB6B-835B221F373F},4,Application,0,"""The Windows Search Service started.
+""",0,2025-11-14T11:38:46.7759194Z,2147,0,DESKTOP-MHRV979,1,0,INFORMATION,Microsoft-Windows-Search, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,_tbfgJoBBFAMeJ5snPen,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent started.,"[""ossec""]",503, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 13, 2025 @ 23:38:47.103",wazuh-agent,1763098727.58058,"Nov 13, 2025 @ 23:38:47.103", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent started: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,F6ahhZoBXqcgaO8hiWzI,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,89566552,failed,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history", ,5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,9,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.: Status changed from 'not applicable' to failed,"[""sca""]",19014,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:48:58.462",sca,1763178538.172989,"Nov 14, 2025 @ 21:48:58.462", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,not applicable, , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,E6aghZoBXqcgaO8h0Wzz,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent stopped.,"[""ossec""]",506, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 21:48:09.976",wazuh-remoted,1763178489.171625,"Nov 14, 2025 @ 21:48:09.976", , , , , , , , , , , , , , , , , , , , , , , ,"[""Disable or Modify Tools""]","[""T1562.001""]","[""Defense Evasion""]", , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent stopped: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,FKaghZoBXqcgaO8h0Wzz,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent started.,"[""ossec""]",503, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 21:48:11.764",wazuh-agent,1763178491.171967,"Nov 14, 2025 @ 21:48:11.764", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent started: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,DqafhZoBXqcgaO8hXmy3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:43.768",EventChannel,1763178403.148345,"Nov 14, 2025 @ 21:46:43.768", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x46E592
+	Linked Logon ID:		0x46E5B1
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-15T03:46:42.7744703Z,37284,668,DESKTOP-MHRV979,12544,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x46e5b1,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x46e592,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1842,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,EaafhZoBXqcgaO8hXmy3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Non service account logged off.,"[""windows"","" WEF""]",67023, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:46:43.873",EventChannel,1763178403.166861,"Nov 14, 2025 @ 21:46:43.873", ,4634, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was logged off.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x46E5B1
+
+Logon Type:			2
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer.""",0,2025-11-15T03:46:42.7861904Z,37287,668,DESKTOP-MHRV979,12545,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,0x46e5b1, , ,Chris, , , , , ,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002, ,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,CaafhZoBXqcgaO8hK2zn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,5,"[""10.2.4"",""10.2.5""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Logon Failure - Unknown user or bad password,"[""windows"",""windows_security"",""authentication_failed""]",60122, ,"[""AU.14"",""AC.7""]","[""IV_35.7.d"",""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:30.405",EventChannel,1763178390.119994,"Nov 14, 2025 @ 21:46:30.405", ,4625, ,0x8010000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x3dc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",0,2025-11-15T03:46:29.4136183Z,37279,668,DESKTOP-MHRV979,12544,596,AUDIT_FAILURE,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Account Access Removal""]","[""T1531""]","[""Impact""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1""]", , , , , , , , , , , , , , , ,127.0.0.1,Negotiate,DESKTOP-MHRV979, ,User32, ,Chris,0, ,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-0-0, ,2,0xc000006a,%%2313,0xc000006d, , , , , , 
+wazuh-alerts-4.x-2025.11.15,9KaNhZoBXqcgaO8hAmvO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine is initiating recovery steps.,"[""windows"",""windows_application""]",60807, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:39.434",EventChannel,1763177199.87508,"Nov 14, 2025 @ 21:26:39.434","svchost, 396,R,98, DS_Token_DB:",300, ,0x80000000000000, ,4,Application,0,"""svchost (396,R,98) DS_Token_DB: The database engine is initiating recovery steps.""",0,2025-11-15T09:26:38.2517158Z,2253,0,DESKTOP-MHRV979,3,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,8aaLhZoBXqcgaO8hoWuK,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481,not applicable,"To establish the recommended configuration via GP, set the following UI path to 365 or fewer days, but not 0: Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Maximum password age","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""MaximumPasswordAge""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.2,"This policy setting defines how long a user can use their password before it expires. Values for this policy setting range from 0 to 999 days. If you set the value to 0, the password will never expire. Because attackers can crack passwords, the more frequently you change the password the less opportunity an attacker has to use a cracked password. However, the lower this value is set, the higher the potential for an increase in calls to help desk support due to users having to change their password or forgetting which password is current. The recommended state for this setting is 365 or fewer days, but not 0. Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center.",15501,"Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","The longer a password exists the higher the likelihood that it will be compromised by a brute force attack, by an attacker gaining general knowledge about the user, or by the user sharing the password. Configuring the Maximum password age setting to 0 so that users are never required to change their passwords is a major security risk because that allows a compromised password to be used by the malicious user for as long as the valid user has authorized access.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""MaximumPasswordAge\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,4,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]","CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","[""sca""]",19009,"[""1.1.2""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:24:43.596",sca,1763177083.78357,"Nov 14, 2025 @ 21:24:43.596", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,vqaDhZoBXqcgaO8hi2vq,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:16:17.308",EventChannel,1763176577.34121,"Nov 14, 2025 @ 21:16:17.308", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-15T09:16:15.0880540Z,2344,708,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,0aaHhZoBXqcgaO8hhGsm,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,Windows System error event,"[""windows"",""windows_system"",""system_error""]",61102, , ,"[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:20:36.812",EventChannel,1763176836.52420,"Nov 14, 2025 @ 21:20:36.812", ,1801, ,0x8000000000000000,{7d5387b0-cbe0-11da-a94d-0800200c9a66},2,System,0,"""Secure Boot CA/keys need to be updated. This device signature information is included here.
+DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;
+BucketId: b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214
+BucketConfidenceLevel: 
+UpdateType: 0
+HResult: The operation completed successfully.""",0,2025-11-15T09:20:34.8773306Z,2355,6192,DESKTOP-MHRV979,0,6440,ERROR,Microsoft-Windows-TPM-WMI, , , , , , , , , , , , , , ,b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214,BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;,0,0,"[""4.3""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,vKaDhZoBXqcgaO8hYmty,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:16:06.117",EventChannel,1763176566.29431,"Nov 14, 2025 @ 21:16:06.117","hr=0x80004005, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x80004005
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1""",0,2025-11-15T09:16:04.8958297Z,2234,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,1KaIhZoBXqcgaO8hvGu9,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:21:56.717",EventChannel,1763176916.68311,"Nov 14, 2025 @ 21:21:56.717","2025-11-16T09:15:55Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:55Z. Reason: RulesEngine.""",0,2025-11-15T09:21:55.4911531Z,2245,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,zaaFhZoBXqcgaO8hYWsK,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481, , , , , , , , , , ,summary,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,7,"[""2.2""]","[""CC7.1"",""CC7.2""]", ,SCA summary: CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Score less than 50% (32),"[""sca""]",19004, ,"[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:18:11.608",sca,1763176691.49241,"Nov 14, 2025 @ 21:18:11.608", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,32,394,cis_win10_enterprise.yml,cis_win10_enterprise,6,This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 10 Enterprise.,126,262, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,tKaDhZoBXqcgaO8hBmvG,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent started.,"[""ossec""]",503, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 21:15:37.836",wazuh-agent,1763176537.536,"Nov 14, 2025 @ 21:15:37.836", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent started: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,uqaDhZoBXqcgaO8hRmv7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:16:02.320",EventChannel,1763176562.18666,"Nov 14, 2025 @ 21:16:02.320", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		No
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x690FD
+	Linked Logon ID:		0x690D1
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-15T09:15:44.5663933Z,37089,672,DESKTOP-MHRV979,12544,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x690d1,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x690fd,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1843,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,XdZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,7, , , ,SessionEnv was unavailable to handle a critical notification event.,"[""windows"",""windows_application""]",60776, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.005",EventChannel,1763106759.128862,"Nov 14, 2025 @ 01:52:39.005",SessionEnv,6003,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a critical notification event.""",0,2025-11-14T13:52:24.1700338Z,2196,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.14,X9ZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.140",EventChannel,1763106759.131921,"Nov 14, 2025 @ 01:52:39.140", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x8F646
+	Linked Logon ID:		0x8F672
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3f0
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-14T13:52:24.1652744Z,36184,644,DESKTOP-MHRV979,12544,592,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x8f672,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x8f646,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1842,0x3f0,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,WNZZgZoBBFAMeJ5s3Pgn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent started.,"[""ossec""]",503, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 01:52:13.869",wazuh-agent,1763106733.117893,"Nov 14, 2025 @ 01:52:13.869", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent started: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,WtZZgZoBBFAMeJ5s3Pgn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine attached a database.,"[""windows"",""windows_application""]",60798, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:14.127",EventChannel,1763106734.119507,"Nov 14, 2025 @ 01:52:14.127","SearchIndexer, 2292,D,50, Windows:, 1, C:\\ProgramData\\Microsoft\\Search\\Data\\Applications\\Windows\\Windows.edb, 0,  [1] 0.000001 +J(0) [2] 0.000601 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K) [3] 0.034522 -0.031316 (3) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:17, WS:36K # 0K, PF:20K # 0K, P:20K) [4] 0.000044 +J(0) [5] - [6] - [7] - [8] 0.000594 -0.000463 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:22, WS:88K # 0K, PF:532K # 0K, P:532K) [9] 0.058978 -0.000045 (5) CM -0.058810 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K) [10] 0.000086 -0.000026 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:10, WS:40K # 0K, PF:96K # 0K, P:96K) [11] 0.000011 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K) [12] 0.000132 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K) [13] 0.0 +J(0) [14] 0.0 +J(0) [15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0)., 0 0, lgposAttach = 0000000C:008E:0268, dbv = 1568.110.240",326, ,0x80000000000000, ,4,Application,0,"""SearchIndexer (2292,D,50) Windows: The database engine attached a database (1, C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.edb). (Time=0 seconds) 
+ 
+Saved Cache: 0 0 
+Additional Data: lgposAttach = 0000000C:008E:0268,
+dbv = 1568.110.240 
+ 
+Internal Timing Sequence: 
+[1] 0.000001 +J(0)
+[2] 0.000601 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K)
+[3] 0.034522 -0.031316 (3) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:17, WS:36K # 0K, PF:20K # 0K, P:20K)
+[4] 0.000044 +J(0)
+[5] -
+[6] -
+[7] -
+[8] 0.000594 -0.000463 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:22, WS:88K # 0K, PF:532K # 0K, P:532K)
+[9] 0.058978 -0.000045 (5) CM -0.058810 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K)
+[10] 0.000086 -0.000026 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:10, WS:40K # 0K, PF:96K # 0K, P:96K)
+[11] 0.000011 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K)
+[12] 0.000132 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K)
+[13] 0.0 +J(0)
+[14] 0.0 +J(0)
+[15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0).""",0,2025-11-14T13:52:12.2255894Z,2187,0,DESKTOP-MHRV979,1,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,btZjgZoBBFAMeJ5sUvhp,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,1935893949,not applicable,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""PasswordHistorySize""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.,"[""sca""]",19009,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 02:02:32.092",sca,1763107352.173918,"Nov 14, 2025 @ 02:02:32.092", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,KtYDgZoBBFAMeJ5s2fhZ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 00:18:15.218",EventChannel,1763101095.115710,"Nov 14, 2025 @ 00:18:15.218", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-14T12:18:12.9728401Z,2243,4332,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,KdYBgZoBBFAMeJ5s8PjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 00:16:08.509",EventChannel,1763100968.113879,"Nov 14, 2025 @ 00:16:08.509", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-14T12:16:06.2574067Z,2242,4332,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,FdblgJoBBFAMeJ5s7vhq,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,Name resolution for the name 60.205.201.74.in-addr.arpa. timed out,"[""windows"",""windows_system""]",61109, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:45:40.207",EventChannel,1763099140.105753,"Nov 13, 2025 @ 23:45:40.207", ,1014, ,0x4000000010000000,{1c95126e-7eea-49a9-a3fe-a378b03ddb4d},3,System,0,"""Name resolution for the name 60.205.201.74.in-addr.arpa. timed out after none of the configured DNS servers responded.""",0,2025-11-14T11:45:37.9047261Z,2238,6408,DESKTOP-MHRV979,1014,1136,WARNING,Microsoft-Windows-DNS-Client, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,128,170000000000000020010578003F000000000000000000300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,60.205.201.74.in-addr.arpa., , 
+wazuh-alerts-4.x-2025.11.14,b9ZjgZoBBFAMeJ5stPgW,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 02:03:03.115",EventChannel,1763107383.180781,"Nov 14, 2025 @ 02:03:03.115","2025-11-15T13:52:01Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T13:52:01Z. Reason: RulesEngine.""",0,2025-11-14T14:03:01.2524769Z,2212,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,FtbpgJoBBFAMeJ5sXfiv,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,5,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:49:25.790",EventChannel,1763099365.107853,"Nov 13, 2025 @ 23:49:25.790","2025-11-15T11:39:24Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T11:39:24Z. Reason: RulesEngine.""",0,2025-11-14T11:49:24.4923990Z,2173,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,Y9ZagZoBBFAMeJ5sn_h7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:53:09.013",EventChannel,1763106789.152773,"Nov 14, 2025 @ 01:53:09.013","2025-11-15T13:52:05Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T13:52:05Z. Reason: RulesEngine.""",0,2025-11-14T13:53:05.9253235Z,2200,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,BdbggJoBBFAMeJ5sZPgJ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,SessionEnv was unavailable to handle a notification event.,"[""windows"",""windows_application""]",60775, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:38.373",EventChannel,1763098778.72153,"Nov 13, 2025 @ 23:39:38.373",SessionEnv,6000,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a notification event.""",0,2025-11-14T11:39:37.0616811Z,2158,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.14,B9bggJoBBFAMeJ5sZ_ja,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:39:39.138",EventChannel,1763098779.81396,"Nov 13, 2025 @ 23:39:39.138", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		No
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0xB59CE
+	Linked Logon ID:		0xB59A1
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-14T11:39:36.6436194Z,35289,636,DESKTOP-MHRV979,12544,580,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0xb59a1,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0xb59ce,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1843,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,CNbggJoBBFAMeJ5sZ_ja,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Special privileges assigned to new logon.,"[""windows"","" WEF""]",67028, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:39.150",EventChannel,1763098779.89122,"Nov 13, 2025 @ 23:39:39.150", ,4672, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0xB59A1
+
+Privileges:		SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege""",0,2025-11-14T11:39:36.6436225Z,35290,636,DESKTOP-MHRV979,12548,580,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0xb59a1,S-1-5-21-355707830-1189791961-1431070526-1002,DESKTOP-MHRV979,SeSecurityPrivilege     SeTakeOwnershipPrivilege     SeLoadDriverPrivilege     SeBackupPrivilege     SeRestorePrivilege     SeDebugPrivilege     SeSystemEnvironmentPrivilege     SeImpersonatePrivilege     SeDelegateSessionUserImpersonatePrivilege,Chris,"[""Domain Policy Modification""]","[""T1484""]","[""Defense Evasion"",""Privilege Escalation""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,DtbigJoBBFAMeJ5sY_jw,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:41:46.142",EventChannel,1763098906.97702,"Nov 13, 2025 @ 23:41:46.142", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-14T11:41:43.6853137Z,2235,2692,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,ENbkgJoBBFAMeJ5sOPjS,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,Windows System error event,"[""windows"",""windows_system"",""system_error""]",61102, , ,"[""IV_35.7.d""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:43:45.229",EventChannel,1763099025.101125,"Nov 13, 2025 @ 23:43:45.229", ,1801, ,0x8000000000000000,{7d5387b0-cbe0-11da-a94d-0800200c9a66},2,System,0,"""Secure Boot CA/keys need to be updated. This device signature information is included here.
+DeviceAttributes: BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;
+BucketId: b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214
+BucketConfidenceLevel: 
+UpdateType: 0
+HResult: The operation completed successfully.""",0,2025-11-14T11:43:42.9117724Z,2236,3376,DESKTOP-MHRV979,0,4724,ERROR,Microsoft-Windows-TPM-WMI, , , , , , , , , , , , , , ,b3505d1a9b743dca12c6f738fbc9cddc334820127646250a334f0be309937214,BaseBoardManufacturer:;FirmwareManufacturer:;FirmwareVersion:;OEMModelNumber:VirtualBox;OEMModelBaseBoard:;OEMModelSystemFamily:;OEMManufacturerName:innotek GmbH;OEMModelSKU:;OSArchitecture:amd64;,0,0,"[""4.3""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,DNbhgJoBBFAMeJ5sBPgt,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:40:19.483",EventChannel,1763098819.94516,"Nov 13, 2025 @ 23:40:19.483","2025-11-15T11:39:18Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T11:39:18Z. Reason: RulesEngine.""",0,2025-11-14T11:40:18.1856476Z,2162,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,Lqa9hZoBXqcgaO8heGwK,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 22:19:30.945",EventChannel,1763180370.196357,"Nov 14, 2025 @ 22:19:30.945","2025-11-16T09:15:30Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:30Z. Reason: RulesEngine.""",0,2025-11-15T04:19:30.9246822Z,2266,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,Jaa0hZoBXqcgaO8hFGzU,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 22:09:15.623",EventChannel,1763179755.190159,"Nov 14, 2025 @ 22:09:15.623", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-15T04:09:14.6468809Z,2381,1196,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,HaamhZoBXqcgaO8hf2zB,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,6,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:54:24.977",EventChannel,1763178864.188328,"Nov 14, 2025 @ 21:54:24.977", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-15T03:54:23.9813217Z,2380,8064,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,HKalhZoBXqcgaO8hz2zz,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,6,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:53:44.013",EventChannel,1763178824.186734,"Nov 14, 2025 @ 21:53:44.013","2025-11-16T09:15:44Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:44Z. Reason: RulesEngine.""",0,2025-11-15T03:53:44.0125814Z,2263,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,GaahhZoBXqcgaO8h62x0,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,89566552, , , , , , , , , , ,summary,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,2,false,7,"[""2.2""]","[""CC7.1"",""CC7.2""]", ,SCA summary: CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Score less than 50% (32),"[""sca""]",19004, ,"[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:49:20.939",sca,1763178560.185384,"Nov 14, 2025 @ 21:49:20.939", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,32,394,cis_win10_enterprise.yml,cis_win10_enterprise,4,This document provides prescriptive guidance for establishing a secure configuration posture for Microsoft Windows 10 Enterprise.,127,263, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,D6afhZoBXqcgaO8hXmy3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:43.810",EventChannel,1763178403.156082,"Nov 14, 2025 @ 21:46:43.810", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		No
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x46E5B1
+	Linked Logon ID:		0x46E592
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-15T03:46:42.7744772Z,37285,668,DESKTOP-MHRV979,12544,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x46e592,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x46e5b1,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1843,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,uaaDhZoBXqcgaO8hRmv7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:16:02.288",EventChannel,1763176562.10938,"Nov 14, 2025 @ 21:16:02.288", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x690D1
+	Linked Logon ID:		0x690FD
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-15T09:15:44.5663853Z,37088,672,DESKTOP-MHRV979,12544,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x690fd,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x690d1,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1842,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,CqafhZoBXqcgaO8hN2yV,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,5,"[""10.2.4"",""10.2.5""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Logon Failure - Unknown user or bad password,"[""windows"",""windows_security"",""authentication_failed""]",60122, ,"[""AU.14"",""AC.7""]","[""IV_35.7.d"",""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:33.250",EventChannel,1763178393.126624,"Nov 14, 2025 @ 21:46:33.250", ,4625, ,0x8010000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x3dc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",0,2025-11-15T03:46:32.2754858Z,37280,616,DESKTOP-MHRV979,12544,596,AUDIT_FAILURE,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Account Access Removal""]","[""T1531""]","[""Impact""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1""]", , , , , , , , , , , , , , , ,127.0.0.1,Negotiate,DESKTOP-MHRV979, ,User32, ,Chris,0, ,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-0-0, ,2,0xc000006a,%%2313,0xc000006d, , , , , , 
+wazuh-alerts-4.x-2025.11.15,C6afhZoBXqcgaO8hQ2xT,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,5,"[""10.2.4"",""10.2.5""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Logon Failure - Unknown user or bad password,"[""windows"",""windows_security"",""authentication_failed""]",60122, ,"[""AU.14"",""AC.7""]","[""IV_35.7.d"",""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:35.975",EventChannel,1763178395.133254,"Nov 14, 2025 @ 21:46:35.975", ,4625, ,0x8010000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x3dc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",0,2025-11-15T03:46:34.9799756Z,37281,616,DESKTOP-MHRV979,12544,596,AUDIT_FAILURE,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Account Access Removal""]","[""T1531""]","[""Impact""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1""]", , , , , , , , , , , , , , , ,127.0.0.1,Negotiate,DESKTOP-MHRV979, ,User32, ,Chris,0, ,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-0-0, ,2,0xc000006a,%%2313,0xc000006d, , , , , , 
+wazuh-alerts-4.x-2025.11.15,DKafhZoBXqcgaO8hT2wL,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,5,false,5,"[""10.2.4"",""10.2.5""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Logon Failure - Unknown user or bad password,"[""windows"",""windows_security"",""authentication_failed""]",60122, ,"[""AU.14"",""AC.7""]","[""IV_35.7.d"",""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:39.274",EventChannel,1763178399.139884,"Nov 14, 2025 @ 21:46:39.274", ,4625, ,0x8010000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x3dc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",0,2025-11-15T03:46:38.2549745Z,37282,668,DESKTOP-MHRV979,12544,596,AUDIT_FAILURE,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Account Access Removal""]","[""T1531""]","[""Impact""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1""]", , , , , , , , , , , , , , , ,127.0.0.1,Negotiate,DESKTOP-MHRV979, ,User32, ,Chris,0, ,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-0-0, ,2,0xc000006a,%%2313,0xc000006d, , , , , , 
+wazuh-alerts-4.x-2025.11.15,GKahhZoBXqcgaO8hiWzI,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,89566552,passed,"To establish the recommended configuration via GP, set the following UI path to 365 or fewer days, but not 0: Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Maximum password age", ,5.2,1.1.2,"This policy setting defines how long a user can use their password before it expires. Values for this policy setting range from 0 to 999 days. If you set the value to 0, the password will never expire. Because attackers can crack passwords, the more frequently you change the password the less opportunity an attacker has to use a cracked password. However, the lower this value is set, the higher the potential for an increase in calls to help desk support due to users having to change their password or forgetting which password is current. The recommended state for this setting is 365 or fewer days, but not 0. Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center.",15501,"Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","The longer a password exists the higher the likelihood that it will be compromised by a brute force attack, by an attacker gaining general knowledge about the user, or by the user sharing the password. Configuring the Maximum password age setting to 0 so that users are never required to change their passwords is a major security risk because that allows a compromised password to be used by the malicious user for as long as the valid user has authorized access.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""MaximumPasswordAge\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]","CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.: Status changed from 'not applicable' to passed","[""sca""]",19015,"[""1.1.2""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:48:58.486",sca,1763178538.179498,"Nov 14, 2025 @ 21:48:58.486", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,not applicable, , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,'-KaNhZoBXqcgaO8hZGuH,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5,"[""10.6.1""]","[""CC7.2"",""CC7.3""]", ,System time changed,"[""windows"",""windows_security"",""time_changed""]",60132, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:26:57.619",EventChannel,1763177217.98450,"Nov 14, 2025 @ 21:26:57.619", ,4616, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""The system time was changed.
+
+Subject:
+	Security ID:		S-1-5-19
+	Account Name:		LOCAL SERVICE
+	Account Domain:		NT AUTHORITY
+	Logon ID:		0x3E5
+
+Process Information:
+	Process ID:	0x1f44
+	Name:		C:\Windows\System32\svchost.exe
+
+Previous Time:		‎2025‎-‎11‎-‎15T09:26:55.100569800Z
+New Time:		‎2025‎-‎11‎-‎15T03:26:56.230721200Z
+
+This event is generated when the system time is changed. It is normal for the Windows Time Service, which runs with System privilege, to change the system time on a regular basis. Other system time changes may be indicative of attempts to tamper with the computer.""",1,2025-11-15T03:26:56.2397834Z,37257,92,DESKTOP-MHRV979,12288,4,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e5,S-1-5-19,NT AUTHORITY, ,LOCAL SERVICE, , , , , , , ,"[""164.312.b""]", , , , , ,"[""1.3"",""4.13""]", , , , , , , , , , , , , , , , , , , , , , , , ,0x1f44,C:\\Windows\\System32\\svchost.exe, , , , , , , , , , , , ,2025-11-15T09:26:55.1005698Z,2025-11-15T03:26:56.2307212Z
+wazuh-alerts-4.x-2025.11.15,_aaPhZoBXqcgaO8h_Gvd,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:29:53.954",EventChannel,1763177393.111533,"Nov 14, 2025 @ 21:29:53.954", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-15T03:29:52.8879787Z,2374,7972,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,_KaOhZoBXqcgaO8hFGtz,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:27:48.826",EventChannel,1763177268.109702,"Nov 14, 2025 @ 21:27:48.826", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-15T03:27:47.7503287Z,2365,6000,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,9aaNhZoBXqcgaO8hAmvO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine is replaying log file C:\Winnt\system32\wins\j50.log.,"[""windows"",""windows_application""]",60808, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:39.458",EventChannel,1763177199.88743,"Nov 14, 2025 @ 21:26:39.458","svchost, 396,R,98, DS_Token_DB:, C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\DataSharing\\Storage\\DSS.log,  [1] 0.020301 -0.004062 (8) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:42735/146) +M(C:0K, Fs:100, WS:256K # 0K, PF:140K # 0K, P:140K)., Insert, 72",301, ,0x80000000000000, ,4,Application,0,"""svchost (396,R,98) DS_Token_DB: The database engine has finished replaying logfile C:\Windows\system32\config\systemprofile\AppData\Local\DataSharing\Storage\DSS.log. 
+ 
+Processing Stats: 
+[1] 0.020301 -0.004062 (8) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:42735/146) +M(C:0K, Fs:100, WS:256K # 0K, PF:140K # 0K, P:140K). 
+Log record of type 'Insert   ' was seen most frequently (72 times)""",0,2025-11-15T09:26:38.2869873Z,2254,0,DESKTOP-MHRV979,3,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,8qaMhZoBXqcgaO8hyGsw,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:18.199",EventChannel,1763177178.84592,"Nov 14, 2025 @ 21:26:18.199","2025-11-16T09:15:17Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:17Z. Reason: RulesEngine.""",0,2025-11-15T09:26:17.0045772Z,2251,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,0qaIhZoBXqcgaO8hM2v4,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481,not applicable,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""PasswordHistorySize""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.,"[""sca""]",19009,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:21:20.948",sca,1763176880.55216,"Nov 14, 2025 @ 21:21:20.948", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,06aIhZoBXqcgaO8hM2v4,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481,not applicable,"To establish the recommended configuration via GP, set the following UI path to 365 or fewer days, but not 0: Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Maximum password age","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""MaximumPasswordAge""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.2,"This policy setting defines how long a user can use their password before it expires. Values for this policy setting range from 0 to 999 days. If you set the value to 0, the password will never expire. Because attackers can crack passwords, the more frequently you change the password the less opportunity an attacker has to use a cracked password. However, the lower this value is set, the higher the potential for an increase in calls to help desk support due to users having to change their password or forgetting which password is current. The recommended state for this setting is 365 or fewer days, but not 0. Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center.",15501,"Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","The longer a password exists the higher the likelihood that it will be compromised by a brute force attack, by an attacker gaining general knowledge about the user, or by the user sharing the password. Configuring the Maximum password age setting to 0 so that users are never required to change their passwords is a major security risk because that allows a compromised password to be used by the malicious user for as long as the valid user has authorized access.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""MaximumPasswordAge\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,2,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]","CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","[""sca""]",19009,"[""1.1.2""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:21:20.971",sca,1763176880.62076,"Nov 14, 2025 @ 21:21:20.971", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,8KaLhZoBXqcgaO8hoWuK,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481,not applicable,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""PasswordHistorySize""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,3,false,3,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.,"[""sca""]",19009,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:24:43.560",sca,1763177083.71497,"Nov 14, 2025 @ 21:24:43.560", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,y6aEhZoBXqcgaO8h_2tO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,216894481,not applicable,"To establish the recommended configuration via GP, set the following UI path to 365 or fewer days, but not 0: Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Maximum password age","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""MaximumPasswordAge""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.2,"This policy setting defines how long a user can use their password before it expires. Values for this policy setting range from 0 to 999 days. If you set the value to 0, the password will never expire. Because attackers can crack passwords, the more frequently you change the password the less opportunity an attacker has to use a cracked password. However, the lower this value is set, the higher the potential for an increase in calls to help desk support due to users having to change their password or forgetting which password is current. The recommended state for this setting is 365 or fewer days, but not 0. Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center.",15501,"Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.","The longer a password exists the higher the likelihood that it will be compromised by a brute force attack, by an attacker gaining general knowledge about the user, or by the user sharing the password. Configuring the Maximum password age setting to 0 so that users are never required to change their passwords is a major security risk because that allows a compromised password to be used by the malicious user for as long as the valid user has authorized access.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""MaximumPasswordAge\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,5,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]","CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'.: Status changed from passed to 'not applicable'","[""sca""]",19012,"[""1.1.2""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 21:17:50.053",sca,1763176670.41331,"Nov 14, 2025 @ 21:17:50.053", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,passed, , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,taaDhZoBXqcgaO8hBmvG,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine attached a database.,"[""windows"",""windows_application""]",60798, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:15:37.962",EventChannel,1763176537.873,"Nov 14, 2025 @ 21:15:37.962","SearchIndexer, 2180,D,50, Windows:, 1, C:\\ProgramData\\Microsoft\\Search\\Data\\Applications\\Windows\\Windows.edb, 0,  [1] 0.000001 +J(0) [2] 0.000334 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K) [3] 0.088422 -0.085609 (3) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:19, WS:44K # 0K, PF:36K # 0K, P:36K) [4] 0.000047 +J(0) [5] - [6] - [7] - [8] 0.000623 -0.000472 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:18, WS:72K # 0K, PF:532K # 0K, P:532K) [9] 0.396983 -0.000044 (5) CM -0.396790 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K) [10] 0.000087 -0.000032 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:9, WS:36K # 0K, PF:32K # 0K, P:32K) [11] 0.000006 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K) [12] 0.000020 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K) [13] 0.0 +J(0) [14] 0.0 +J(0) [15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0)., 0 0, lgposAttach = 0000000C:00F5:0268, dbv = 1568.110.240",326, ,0x80000000000000, ,4,Application,0,"""SearchIndexer (2180,D,50) Windows: The database engine attached a database (1, C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.edb). (Time=0 seconds) 
+ 
+Saved Cache: 0 0 
+Additional Data: lgposAttach = 0000000C:00F5:0268,
+dbv = 1568.110.240 
+ 
+Internal Timing Sequence: 
+[1] 0.000001 +J(0)
+[2] 0.000334 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K)
+[3] 0.088422 -0.085609 (3) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:19, WS:44K # 0K, PF:36K # 0K, P:36K)
+[4] 0.000047 +J(0)
+[5] -
+[6] -
+[7] -
+[8] 0.000623 -0.000472 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:18, WS:72K # 0K, PF:532K # 0K, P:532K)
+[9] 0.396983 -0.000044 (5) CM -0.396790 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K)
+[10] 0.000087 -0.000032 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:9, WS:36K # 0K, PF:32K # 0K, P:32K)
+[11] 0.000006 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K)
+[12] 0.000020 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K)
+[13] 0.0 +J(0)
+[14] 0.0 +J(0)
+[15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0).""",0,2025-11-15T09:15:36.6667565Z,2224,0,DESKTOP-MHRV979,1,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,vaaDhZoBXqcgaO8hbmsK,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:16:12.705",EventChannel,1763176572.31786,"Nov 14, 2025 @ 21:16:12.705","hr=0x80004005, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x80004005
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=NetworkAvailable""",0,2025-11-15T09:16:11.5241249Z,2236,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,1aaJhZoBXqcgaO8hbGum,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:22:41.344",EventChannel,1763176961.69904,"Nov 14, 2025 @ 21:22:41.344","2025-11-16T09:15:40Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:40Z. Reason: RulesEngine.""",0,2025-11-15T09:22:40.1579331Z,2247,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,iNaQgZoBBFAMeJ5sgfgd,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 02:51:51.958",EventChannel,1763110311.182375,"Nov 14, 2025 @ 02:51:51.958","2025-11-15T13:51:50Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T13:51:50Z. Reason: RulesEngine.""",0,2025-11-14T14:51:50.1687720Z,2214,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,ZNZagZoBBFAMeJ5s2vgi,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu,1935893949,not applicable,"To establish the recommended configuration via GP, set the following UI path to 24 or more password(s): Computer Configuration\Policies\Windows Settings\Security Settings\Account Policies\Password Policy\Enforce password history","Timeout overtaken running command 'powershell secedit /export /cfg $env:TEMP\secpol.cfg; Get-Content $env:TEMP\secpol.cfg | Select-String ""PasswordHistorySize""; Remove-Item $env:TEMP\secpol.cfg'",5.2,1.1.1,"This policy setting determines the number of renewed, unique passwords that have to be associated with a user account before you can reuse an old password. The value for this policy setting must be between 0 and 24 passwords. The default value for Windows Vista is 0 passwords, but the default setting in a domain is 24 passwords. To maintain the effectiveness of this policy setting, use the Minimum password age setting to prevent users from repeatedly changing their password. The recommended state for this setting is: 24 or more password(s). Note: Password Policy settings (section 1.1) and Account Lockout Policy settings (section 1.2) must be applied via the Default Domain Policy GPO in order to be globally in effect on domain user accounts as their default behavior. If these settings are configured in another GPO, they will only affect local user accounts on the computers that receive the GPO. However, custom exceptions to the default password policy and account lockout policy rules for specific domain users and/or groups can be defined using Password Settings Objects (PSOs), which are completely separate from Group Policy and most easily configured using Active Directory Administrative Center. Note #2: As of the publication of this benchmark, Microsoft currently has a maximum limit of 24 saved passwords. For more information, please visit Enforce password history (Windows 10) - Windows security | Microsoft Docs",15500,Ensure 'Enforce password history' is set to '24 or more password(s)'.,"The longer a user uses the same password, the greater the chance that an attacker can determine the password through brute force attacks. Also, any accounts that may have been compromised will remain exploitable for as long as the password is left unchanged. If password changes are required but password reuse is not prevented, or if users continually reuse a small number of passwords, the effectiveness of a good password policy is greatly reduced. If you specify a low number for this policy setting, users will be able to use the same small number of passwords repeatedly. If you do not also configure the Minimum password age setting, users might repeatedly change their passwords until they can reuse their original password.","[""powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \""PasswordHistorySize\""; Remove-Item $env:TEMP\\secpol.cfg""]",check,CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0,1,false,5,"[""2.2""]","[""CC7.1"",""CC7.2""]","[""5.2""]",CIS Microsoft Windows 10 Enterprise Benchmark v1.12.0: Ensure 'Enforce password history' is set to '24 or more password(s)'.: Status changed from failed to 'not applicable',"[""sca""]",19013,"[""1.1.1""]","[""CM.1""]","[""IV_35.7.d""]",sca,log,"Nov 14, 2025 @ 01:53:18.972",sca,1763106798.154367,"Nov 14, 2025 @ 01:53:18.972", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,failed, , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,XtZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,SessionEnv was unavailable to handle a notification event.,"[""windows"",""windows_application""]",60775, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.024",EventChannel,1763106759.130405,"Nov 14, 2025 @ 01:52:39.024",SessionEnv,6000,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a notification event.""",0,2025-11-14T13:52:24.4129377Z,2197,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.14,YNZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.162",EventChannel,1763106759.139650,"Nov 14, 2025 @ 01:52:39.162", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		No
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x8F672
+	Linked Logon ID:		0x8F646
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3f0
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-14T13:52:24.1652954Z,36185,644,DESKTOP-MHRV979,12544,592,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0x8f646,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0x8f672,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1843,0x3f0,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,YtZagZoBBFAMeJ5sPfjQ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:39.523",EventChannel,1763106759.150417,"Nov 14, 2025 @ 01:52:39.523","hr=0x80004005, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x80004005
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1""",0,2025-11-14T13:52:29.5299072Z,2199,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,W9ZZgZoBBFAMeJ5s3Pgn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The Windows search service started.,"[""windows"",""windows_application""]",60668, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 01:52:14.788",EventChannel,1763106734.125189,"Nov 14, 2025 @ 01:52:14.788", ,1003,Windows Search Service,0x80000000000000,{CA4E628D-8567-4896-AB6B-835B221F373F},4,Application,0,"""The Windows Search Service started.
+""",0,2025-11-14T13:52:12.7567032Z,2188,0,DESKTOP-MHRV979,1,0,INFORMATION,Microsoft-Windows-Search, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,UdZJgZoBBFAMeJ5s_fhB,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent disconnected.,"[""ossec""]",504, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 01:34:58.604",wazuh-monitord,1763105698.117541,"Nov 14, 2025 @ 01:34:58.604", , , , , , , , , , , , , , , , , , , , , , , ,"[""Disable or Modify Tools""]","[""T1562.001""]","[""Defense Evasion""]", , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , , , ,ossec: Agent disconnected: 'DESKTOP-MHRV979-any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,GtbsgJoBBFAMeJ5sHfgr,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:52:24.302",EventChannel,1763099544.111278,"Nov 13, 2025 @ 23:52:24.302", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-14T11:52:21.9993638Z,2241,5500,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,BNbggJoBBFAMeJ5sZPgJ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,7, , , ,SessionEnv was unavailable to handle a critical notification event.,"[""windows"",""windows_application""]",60776, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:37.960",EventChannel,1763098777.70611,"Nov 13, 2025 @ 23:39:37.960",SessionEnv,6003,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a critical notification event.""",0,2025-11-14T11:39:36.6673423Z,2157,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.14,BtbggJoBBFAMeJ5sZPgJ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3,"[""10.2.5""]","[""CC6.8"",""CC7.2"",""CC7.3""]", ,Windows Workstation Logon Success,"[""windows"",""windows_security"",""authentication_success""]",60118, ,"[""AU.14"",""AC.9""]","[""IV_32.2""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:39:39.084",EventChannel,1763098779.73668,"Nov 13, 2025 @ 23:39:39.084", ,4624, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was successfully logged on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		2
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0xB59A1
+	Linked Logon ID:		0xB59CE
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x3dc
+	Process Name:		C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",2,2025-11-14T11:39:36.6436117Z,35288,636,DESKTOP-MHRV979,12544,580,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Valid Accounts""]","[""T1078""]","[""Defense Evasion"",""Persistence"",""Privilege Escalation"",""Initial Access""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1"",""7.2""]", , , , , , , , , , , , , ,0xb59ce,%%1833,127.0.0.1,Negotiate,DESKTOP-MHRV979,0xb59a1,User32,{00000000-0000-0000-0000-000000000000},Chris,0,%%1842,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002,%%1843,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,_9bfgJoBBFAMeJ5snPen,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine has completed recovery steps.,"[""windows"",""windows_application""]",60809, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:38:47.265",EventChannel,1763098727.58397,"Nov 13, 2025 @ 23:38:47.265","SearchIndexer, 2116,U,98, Windows:",302, ,0x80000000000000, ,4,Application,0,"""SearchIndexer (2116,U,98) Windows: The database engine has successfully completed recovery steps.""",0,2025-11-14T11:38:45.9479516Z,2143,0,DESKTOP-MHRV979,3,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,ANbfgJoBBFAMeJ5snPin,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine attached a database.,"[""windows"",""windows_application""]",60798, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:38:47.390",EventChannel,1763098727.59670,"Nov 13, 2025 @ 23:38:47.390","SearchIndexer, 2116,D,50, Windows:, 1, C:\\ProgramData\\Microsoft\\Search\\Data\\Applications\\Windows\\Windows.edb, 0,  [1] 0.000001 +J(0) [2] 0.000391 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K) [3] 0.025766 -0.022427 (4) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:18, WS:40K # 0K, PF:20K # 0K, P:20K) [4] 0.000043 +J(0) [5] - [6] - [7] - [8] 0.000927 -0.000761 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:19, WS:76K # 0K, PF:532K # 0K, P:532K) [9] 0.054403 -0.000046 (5) CM -0.054241 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K) [10] 0.000061 -0.000027 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:9, WS:36K # 0K, PF:96K # 0K, P:96K) [11] 0.000005 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K) [12] 0.000016 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K) [13] 0.0 +J(0) [14] 0.0 +J(0) [15] 0.000001 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0)., 0 0, lgposAttach = 0000000C:0071:0268, dbv = 1568.110.240",326, ,0x80000000000000, ,4,Application,0,"""SearchIndexer (2116,D,50) Windows: The database engine attached a database (1, C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.edb). (Time=0 seconds) 
+ 
+Saved Cache: 0 0 
+Additional Data: lgposAttach = 0000000C:0071:0268,
+dbv = 1568.110.240 
+ 
+Internal Timing Sequence: 
+[1] 0.000001 +J(0)
+[2] 0.000391 +J(0) +M(C:0K, Fs:24, WS:32K # 0K, PF:32K # 0K, P:32K)
+[3] 0.025766 -0.022427 (4) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:3480/2) +M(C:0K, Fs:18, WS:40K # 0K, PF:20K # 0K, P:20K)
+[4] 0.000043 +J(0)
+[5] -
+[6] -
+[7] -
+[8] 0.000927 -0.000761 (2) CM +J(CM:2, PgRf:2, Rd:14/2, Dy:0/0, Lg:54/1) +M(C:0K, Fs:19, WS:76K # 0K, PF:532K # 0K, P:532K)
+[9] 0.054403 -0.000046 (5) CM -0.054241 (3) WT +J(CM:5, PgRf:23, Rd:0/5, Dy:0/0, Lg:0/0) +M(C:0K, Fs:65, WS:260K # 0K, PF:224K # 0K, P:224K)
+[10] 0.000061 -0.000027 (1) CM +J(CM:1, PgRf:40, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:9, WS:36K # 0K, PF:96K # 0K, P:96K)
+[11] 0.000005 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K)
+[12] 0.000016 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:3, WS:12K # 0K, PF:0K # 0K, P:0K)
+[13] 0.0 +J(0)
+[14] 0.0 +J(0)
+[15] 0.000001 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0).""",0,2025-11-14T11:38:46.0285069Z,2146,0,DESKTOP-MHRV979,1,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,GdbqgJoBBFAMeJ5sNPiR,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 13, 2025 @ 23:50:20.038",EventChannel,1763099420.109447,"Nov 13, 2025 @ 23:50:20.038", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-14T11:50:17.7267592Z,2239,5980,DESKTOP-MHRV979,0,572,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,CdbggJoBBFAMeJ5soviA,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,5, , , ,License activation (slui.exe) failed.,"[""windows"",""windows_application""]",60646, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:39:49.475",EventChannel,1763098789.92161,"Nov 13, 2025 @ 23:39:49.475","hr=0x80004005, RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1",8198,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},2,Application,0,"""License Activation (slui.exe) failed with the following error code:
+hr=0x80004005
+Command-line arguments:
+RuleId=31e71c49-8da7-4a2f-ad92-45d98a1c79ba;Action=AutoActivate;AppId=55c92734-d682-4d71-983e-d6ec3f16059f;SkuId=4de7cb65-cdf1-4de9-8ae8-e3cce27b9f2c;NotificationInterval=1440;Trigger=UserLogon;SessionId=1""",0,2025-11-14T11:39:48.1687286Z,2161,0,DESKTOP-MHRV979,0,0,ERROR,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.14,D9bigJoBBFAMeJ5sxfih,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,4,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 13, 2025 @ 23:42:15.169",EventChannel,1763098935.99532,"Nov 13, 2025 @ 23:42:15.169","2025-11-15T11:39:13Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-15T11:39:13Z. Reason: RulesEngine.""",0,2025-11-14T11:42:13.8754103Z,2171,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,LKa8hZoBXqcgaO8htGyk,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,Name resolution for the name 2.192.19.216.in-addr.arpa. timed out,"[""windows"",""windows_system""]",61109, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 22:18:45.214",EventChannel,1763180325.193821,"Nov 14, 2025 @ 22:18:45.214", ,1014, ,0x4000000010000000,{1c95126e-7eea-49a9-a3fe-a378b03ddb4d},3,System,0,"""Name resolution for the name 2.192.19.216.in-addr.arpa. timed out after none of the configured DNS servers responded.""",0,2025-11-15T04:18:44.1227885Z,2385,6332,DESKTOP-MHRV979,1014,1160,WARNING,Microsoft-Windows-DNS-Client, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,128,170000000000000020010578003F000000000000000000300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,2.192.19.216.in-addr.arpa., , 
+wazuh-alerts-4.x-2025.11.15,K6a7hZoBXqcgaO8htmyU,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 22:17:39.815",EventChannel,1763180259.191990,"Nov 14, 2025 @ 22:17:39.815", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-15T04:17:38.8375437Z,2383,6820,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,FqahhZoBXqcgaO8hKGwY,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent started.,"[""ossec""]",503, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 21:48:38.756",wazuh-agent,1763178518.172649,"Nov 14, 2025 @ 21:48:38.756", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent started: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,FaahhZoBXqcgaO8hDGzC,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6.1"",""10.2.6""]","[""CC7.2"",""CC7.3"",""CC6.8""]", ,Wazuh agent stopped.,"[""ossec""]",506, ,"[""AU.6"",""AU.14"",""AU.5""]","[""IV_35.7.d""]",ossec,log,"Nov 14, 2025 @ 21:48:28.276",wazuh-remoted,1763178508.172307,"Nov 14, 2025 @ 21:48:28.276", , , , , , , , , , , , , , , , , , , , , , , ,"[""Disable or Modify Tools""]","[""T1562.001""]","[""Defense Evasion""]", , , , ,"[""164.312.b""]", , , , , ,"[""10.1""]", , , , , , , , , ,DESKTOP-MHRV979->any,ossec,ossec: Agent stopped: 'DESKTOP-MHRV979->any'., , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,DaafhZoBXqcgaO8hWmzJ,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,5,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:42.265",EventChannel,1763178402.146514,"Nov 14, 2025 @ 21:46:42.265", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.""",0,2025-11-15T03:46:41.2633102Z,2379,6832,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,auto start,BITS,Background Intelligent Transfer Service,demand start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,EKafhZoBXqcgaO8hXmy3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Special privileges assigned to new logon.,"[""windows"","" WEF""]",67028, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:46:43.838",EventChannel,1763178403.163817,"Nov 14, 2025 @ 21:46:43.838", ,4672, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x46E592
+
+Privileges:		SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege""",0,2025-11-15T03:46:42.7744964Z,37286,668,DESKTOP-MHRV979,12548,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x46e592,S-1-5-21-355707830-1189791961-1431070526-1002,DESKTOP-MHRV979,SeSecurityPrivilege     SeTakeOwnershipPrivilege     SeLoadDriverPrivilege     SeBackupPrivilege     SeRestorePrivilege     SeDebugPrivilege     SeSystemEnvironmentPrivilege     SeImpersonatePrivilege     SeDelegateSessionUserImpersonatePrivilege,Chris,"[""Domain Policy Modification""]","[""T1484""]","[""Defense Evasion"",""Privilege Escalation""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,EqafhZoBXqcgaO8hXmy3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,Non service account logged off.,"[""windows"","" WEF""]",67023, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:46:43.899",EventChannel,1763178403.169242,"Nov 14, 2025 @ 21:46:43.899", ,4634, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account was logged off.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x46E592
+
+Logon Type:			2
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer.""",0,2025-11-15T03:46:42.7869057Z,37288,7936,DESKTOP-MHRV979,12545,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,0x46e592, , ,Chris, , , , , ,DESKTOP-MHRV979,S-1-5-21-355707830-1189791961-1431070526-1002, ,2, , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,CKafhZoBXqcgaO8hK2zn,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5,"[""10.2.4"",""10.2.5""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Logon Failure - Unknown user or bad password,"[""windows"",""windows_security"",""authentication_failed""]",60122, ,"[""AU.14"",""AC.7""]","[""IV_35.7.d"",""IV_32.2""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:46:27.695",EventChannel,1763178387.113364,"Nov 14, 2025 @ 21:46:27.695", ,4625, ,0x8010000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		DESKTOP-MHRV979$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x3dc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	DESKTOP-MHRV979
+	Source Network Address:	127.0.0.1
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		User32 
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.""",0,2025-11-15T03:46:26.6656333Z,37278,668,DESKTOP-MHRV979,12544,596,AUDIT_FAILURE,Microsoft-Windows-Security-Auditing,0x3e7,S-1-5-18,WORKGROUP, ,DESKTOP-MHRV979$,"[""Account Access Removal""]","[""T1531""]","[""Impact""]", , , , ,"[""164.312.b""]", , , , , ,"[""7.1""]", , , , , , , , , , , , , , , ,127.0.0.1,Negotiate,DESKTOP-MHRV979, ,User32, ,Chris,0, ,0x3dc,C:\\Windows\\System32\\svchost.exe,0,DESKTOP-MHRV979,S-1-0-0, ,2,0xc000006a,%%2313,0xc000006d, , , , , , 
+wazuh-alerts-4.x-2025.11.15,t6aDhZoBXqcgaO8hRmv7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,7, , , ,SessionEnv was unavailable to handle a critical notification event.,"[""windows"",""windows_application""]",60776, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:16:02.086",EventChannel,1763176562.7883,"Nov 14, 2025 @ 21:16:02.086",SessionEnv,6003,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a critical notification event.""",0,2025-11-15T09:15:44.6398032Z,2226,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.15,uKaDhZoBXqcgaO8hRmv7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,5, , , ,SessionEnv was unavailable to handle a notification event.,"[""windows"",""windows_application""]",60775, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:16:02.094",EventChannel,1763176562.9424,"Nov 14, 2025 @ 21:16:02.094",SessionEnv,6000,Wlclntfy,0x80000000000000,{DBE9B383-7CF3-4331-91CC-A3CB16A3B538},4,Application,0,"""The winlogon notification subscriber <SessionEnv> was unavailable to handle a notification event.""",0,2025-11-15T09:15:45.1271182Z,2227,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Winlogon, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,D9060000, , , , , 
+wazuh-alerts-4.x-2025.11.15,u6aDhZoBXqcgaO8hRmv7,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Special privileges assigned to new logon.,"[""windows"","" WEF""]",67028, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:16:02.346",EventChannel,1763176562.26392,"Nov 14, 2025 @ 21:16:02.346", ,4672, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		S-1-5-21-355707830-1189791961-1431070526-1002
+	Account Name:		Chris
+	Account Domain:		DESKTOP-MHRV979
+	Logon ID:		0x690D1
+
+Privileges:		SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege""",0,2025-11-15T09:15:44.5663959Z,37090,672,DESKTOP-MHRV979,12548,596,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x690d1,S-1-5-21-355707830-1189791961-1431070526-1002,DESKTOP-MHRV979,SeSecurityPrivilege     SeTakeOwnershipPrivilege     SeLoadDriverPrivilege     SeBackupPrivilege     SeRestorePrivilege     SeDebugPrivilege     SeSystemEnvironmentPrivilege     SeImpersonatePrivilege     SeDelegateSessionUserImpersonatePrivilege,Chris,"[""Domain Policy Modification""]","[""T1484""]","[""Defense Evasion"",""Privilege Escalation""]", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,86aNhZoBXqcgaO8hAmvO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine is starting a new instance.,"[""windows"",""windows_application""]",60805, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:39.422",EventChannel,1763177199.86185,"Nov 14, 2025 @ 21:26:39.422","svchost, 396,P,98, DS_Token_DB:, 0, 10, 00, 19045, 0000",102, ,0x80000000000000, ,4,Application,0,"""svchost (396,P,98) DS_Token_DB: The database engine (10.00.19045.0000) is starting a new instance (0).""",0,2025-11-15T09:26:38.2394632Z,2252,0,DESKTOP-MHRV979,1,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,9qaNhZoBXqcgaO8hAmvO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The database engine has completed recovery steps.,"[""windows"",""windows_application""]",60809, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:39.841",EventChannel,1763177199.91130,"Nov 14, 2025 @ 21:26:39.841","svchost, 396,U,98, DS_Token_DB:",302, ,0x80000000000000, ,4,Application,0,"""svchost (396,U,98) DS_Token_DB: The database engine has successfully completed recovery steps.""",0,2025-11-15T09:26:38.3274074Z,2255,0,DESKTOP-MHRV979,3,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,96aNhZoBXqcgaO8hAmvO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3, , , ,The database engine attached a database.,"[""windows"",""windows_application""]",60798, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:26:39.905",EventChannel,1763177199.92391,"Nov 14, 2025 @ 21:26:39.905","svchost, 396,D,50, DS_Token_DB:, 1, C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\DataSharing\\Storage\\DSTokenDB2.dat, 0,  [1] 0.000002 +J(0) [2] 0.001709 -0.000985 (1) WT +J(0) +M(C:0K, Fs:17, WS:4K # 0K, PF:4K # 0K, P:4K) [3] 0.105418 -0.090983 (7) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:255/1) +M(C:0K, Fs:28, WS:96K # 0K, PF:28K # 0K, P:28K) [4] 0.001183 +J(0) [5] - [6] - [7] - [8] 0.000883 -0.000740 (2) CM -0.000614 (2) WT +J(CM:2, PgRf:2, Rd:4/2, Dy:0/0, Lg:54/1) +M(C:8K, Fs:4, WS:16K # 0K, PF:28K # 0K, P:28K) [9] 0.010801 -0.008708 (4) CM -0.008492 (4) WT +J(CM:4, PgRf:23, Rd:0/3, Dy:0/0, Lg:0/0) +M(C:0K, Fs:27, WS:100K # 0K, PF:196K # 0K, P:196K) [10] 0.001108 -0.001044 (2) CM -0.000905 (2) WT +J(CM:2, PgRf:40, Rd:0/2, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:64K # 0K, P:64K) [11] 0.000412 -0.000396 (1) CM -0.000332 (1) WT +J(CM:1, PgRf:1, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K) [12] 0.000027 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:4, WS:16K # 0K, PF:0K # 0K, P:0K) [13] 0.0 +J(0) [14] 0.0 +J(0) [15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0)., 1 0, lgposAttach = 00000005:000E:0268, dbv = 1568.110.240",326, ,0x80000000000000, ,4,Application,0,"""svchost (396,D,50) DS_Token_DB: The database engine attached a database (1, C:\Windows\system32\config\systemprofile\AppData\Local\DataSharing\Storage\DSTokenDB2.dat). (Time=0 seconds) 
+ 
+Saved Cache: 1 0 
+Additional Data: lgposAttach = 00000005:000E:0268,
+dbv = 1568.110.240 
+ 
+Internal Timing Sequence: 
+[1] 0.000002 +J(0)
+[2] 0.001709 -0.000985 (1) WT +J(0) +M(C:0K, Fs:17, WS:4K # 0K, PF:4K # 0K, P:4K)
+[3] 0.105418 -0.090983 (7) WT +J(CM:0, PgRf:0, Rd:0/0, Dy:0/0, Lg:255/1) +M(C:0K, Fs:28, WS:96K # 0K, PF:28K # 0K, P:28K)
+[4] 0.001183 +J(0)
+[5] -
+[6] -
+[7] -
+[8] 0.000883 -0.000740 (2) CM -0.000614 (2) WT +J(CM:2, PgRf:2, Rd:4/2, Dy:0/0, Lg:54/1) +M(C:8K, Fs:4, WS:16K # 0K, PF:28K # 0K, P:28K)
+[9] 0.010801 -0.008708 (4) CM -0.008492 (4) WT +J(CM:4, PgRf:23, Rd:0/3, Dy:0/0, Lg:0/0) +M(C:0K, Fs:27, WS:100K # 0K, PF:196K # 0K, P:196K)
+[10] 0.001108 -0.001044 (2) CM -0.000905 (2) WT +J(CM:2, PgRf:40, Rd:0/2, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:64K # 0K, P:64K)
+[11] 0.000412 -0.000396 (1) CM -0.000332 (1) WT +J(CM:1, PgRf:1, Rd:0/1, Dy:0/0, Lg:0/0) +M(C:0K, Fs:2, WS:8K # 0K, PF:0K # 0K, P:0K)
+[12] 0.000027 +J(CM:0, PgRf:42, Rd:0/0, Dy:0/0, Lg:0/0) +M(C:0K, Fs:4, WS:16K # 0K, PF:0K # 0K, P:0K)
+[13] 0.0 +J(0)
+[14] 0.0 +J(0)
+[15] 0.000002 +J(CM:0, PgRf:1, Rd:0/0, Dy:0/0, Lg:0/0).""",0,2025-11-15T09:26:38.4606085Z,2257,0,DESKTOP-MHRV979,1,0,INFORMATION,ESENT, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,zqaGhZoBXqcgaO8hhms3,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,3,"[""10.6""]","[""CC6.1"",""CC6.8"",""CC7.2"",""CC7.3""]", ,Service startup type was changed,"[""windows"",""windows_system"",""policy_changed""]",61104, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:19:34.536",EventChannel,1763176774.50592,"Nov 14, 2025 @ 21:19:34.536", ,7040,Service Control Manager,0x8080000000000000,{555908d1-a6d7-4695-8e1e-26931d2012f4},4,System,0,"""The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.""",0,2025-11-15T09:19:32.3484045Z,2354,884,DESKTOP-MHRV979,0,588,INFORMATION,Service Control Manager, , , , , , , , ,demand start,BITS,Background Intelligent Transfer Service,auto start,"[""164.312.b""]",This does not appear to be logged on Windows 2000, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,'-6aOhZoBXqcgaO8hFGtz,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,5,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:27:44.355",EventChannel,1763177264.108108,"Nov 14, 2025 @ 21:27:44.355","2025-11-16T09:15:44Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:44Z. Reason: RulesEngine.""",0,2025-11-15T03:27:44.3090024Z,2260,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,zKaEhZoBXqcgaO8h_2tO,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,Software protection service scheduled successfully.,"[""windows"",""windows_application""]",60642, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:17:54.273",EventChannel,1763176674.47648,"Nov 14, 2025 @ 21:17:54.273","2025-11-16T09:15:51Z, RulesEngine",16384,Software Protection Platform Service,0x80000000000000,{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156},4,Application,0,"""Successfully scheduled Software Protection service for re-start at 2025-11-16T09:15:51Z. Reason: RulesEngine.""",0,2025-11-15T09:17:51.8030865Z,2240,0,DESKTOP-MHRV979,0,0,INFORMATION,Microsoft-Windows-Security-SPP, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,tqaDhZoBXqcgaO8hBmvG,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,1,false,3, , , ,The Windows search service started.,"[""windows"",""windows_application""]",60668, , , ,windows_eventchannel,log,"Nov 14, 2025 @ 21:15:38.979",EventChannel,1763176538.6548,"Nov 14, 2025 @ 21:15:38.979", ,1003,Windows Search Service,0x80000000000000,{CA4E628D-8567-4896-AB6B-835B221F373F},4,Application,0,"""The Windows Search Service started.
+""",0,2025-11-15T09:15:37.4781343Z,2225,0,DESKTOP-MHRV979,1,0,INFORMATION,Microsoft-Windows-Search, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 
+wazuh-alerts-4.x-2025.11.15,'-aaNhZoBXqcgaO8hZGuH,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,2,false,5,"[""10.6.1""]","[""CC7.2"",""CC7.3""]", ,System time changed,"[""windows"",""windows_security"",""time_changed""]",60132, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:26:57.664",EventChannel,1763177217.101668,"Nov 14, 2025 @ 21:26:57.664", ,4616, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""The system time was changed.
+
+Subject:
+	Security ID:		S-1-5-19
+	Account Name:		LOCAL SERVICE
+	Account Domain:		NT AUTHORITY
+	Logon ID:		0x3E5
+
+Process Information:
+	Process ID:	0x1f44
+	Name:		C:\Windows\System32\svchost.exe
+
+Previous Time:		‎2025‎-‎11‎-‎15T03:26:56.261112600Z
+New Time:		‎2025‎-‎11‎-‎15T03:26:56.270344500Z
+
+This event is generated when the system time is changed. It is normal for the Windows Time Service, which runs with System privilege, to change the system time on a regular basis. Other system time changes may be indicative of attempts to tamper with the computer.""",1,2025-11-15T03:26:56.2732356Z,37258,92,DESKTOP-MHRV979,12288,4,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e5,S-1-5-19,NT AUTHORITY, ,LOCAL SERVICE, , , , , , , ,"[""164.312.b""]", , , , , ,"[""1.3"",""4.13""]", , , , , , , , , , , , , , , , , , , , , , , , ,0x1f44,C:\\Windows\\System32\\svchost.exe, , , , , , , , , , , , ,2025-11-15T03:26:56.2611126Z,2025-11-15T03:26:56.2703445Z
+wazuh-alerts-4.x-2025.11.15,'-qaNhZoBXqcgaO8hZGuH,1,1,192.168.0.216,DESKTOP-MHRV979,001,Ubuntu, , , , , , , , , , , , , ,3,false,5,"[""10.6.1""]","[""CC7.2"",""CC7.3""]", ,System time changed,"[""windows"",""windows_security"",""time_changed""]",60132, ,"[""AU.6""]","[""IV_35.7.d""]",windows_eventchannel,log,"Nov 14, 2025 @ 21:26:57.705",EventChannel,1763177217.104887,"Nov 14, 2025 @ 21:26:57.705", ,4616, ,0x8020000000000000,{54849625-5478-4994-a5ba-3e3b0328c30d},0,Security,0,"""The system time was changed.
+
+Subject:
+	Security ID:		S-1-5-19
+	Account Name:		LOCAL SERVICE
+	Account Domain:		NT AUTHORITY
+	Logon ID:		0x3E5
+
+Process Information:
+	Process ID:	0x1f44
+	Name:		C:\Windows\System32\svchost.exe
+
+Previous Time:		‎2025‎-‎11‎-‎15T03:26:56.276168600Z
+New Time:		‎2025‎-‎11‎-‎15T03:26:56.296624000Z
+
+This event is generated when the system time is changed. It is normal for the Windows Time Service, which runs with System privilege, to change the system time on a regular basis. Other system time changes may be indicative of attempts to tamper with the computer.""",1,2025-11-15T03:26:56.2978392Z,37259,104,DESKTOP-MHRV979,12288,4,AUDIT_SUCCESS,Microsoft-Windows-Security-Auditing,0x3e5,S-1-5-19,NT AUTHORITY, ,LOCAL SERVICE, , , , , , , ,"[""164.312.b""]", , , , , ,"[""1.3"",""4.13""]", , , , , , , , , , , , , , , , , , , , , , , , ,0x1f44,C:\\Windows\\System32\\svchost.exe, , , , , , , , , , , , ,2025-11-15T03:26:56.2761686Z,2025-11-15T03:26:56.2966240Z
