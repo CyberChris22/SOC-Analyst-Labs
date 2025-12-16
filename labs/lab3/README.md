@@ -1,84 +1,65 @@
-\# Lab 3: Simulating and Detecting Brute-Force Attacks on Linux
+Lab 3: Simulating and Detecting Brute-Force Attacks on Linux
+Objective
 
+Simulate and detect SSH brute-force authentication attacks on a Linux host using Wazuh. Validate log ingestion, rule triggering, and alert appearance in the Wazuh Dashboard.
 
+Lab Steps and Documentation
+1. Verify SSH Service Running
 
-\## Objective
+Confirmed the SSH service is active on Ubuntu VM.
 
-Simulate and detect SSH brute-force authentication attacks on a Linux host using Wazuh. Validate that logs are ingested, rules trigger correctly, and alerts appear in the Wazuh Dashboard.
+Screenshot: Lab3-01_Ubuntu SSH Service Running
 
+2. Generate Failed SSH Login Attempts
 
+Performed multiple SSH login attempts using invalid usernames to simulate brute-force activity.
 
-\## Lab Steps and Documentation
+Sample log entries from /var/log/auth.log:
 
+Dec 15 18:23:00 UbuntuVM sshd[1234]: Failed password for invalid user test from 127.0.0.1 port 55555 ssh2
 
+Dec 15 18:23:02 UbuntuVM sshd[1235]: Failed password for invalid user test2 from 127.0.0.1 port 55556 ssh2
 
-\### 1. Verify SSH Service Running
+Dec 15 18:23:04 UbuntuVM sshd[1236]: Failed password for invalid user test3 from 127.0.0.1 port 55557 ssh2
 
-\- Confirmed the SSH service is active on Ubuntu VM.
+Screenshots:
 
-\- \*\*Screenshot:\*\* `Lab3-01\_Ubuntu\_SSH\_Service\_Running`
+Lab3-02_Ubuntu auth.log failed SSH logins
 
+Lab3-03_Ubuntu auth.log failed SSH logins
 
+Lab3-04_Ubuntu auth.log failed SSH logins
 
-\### 2. Generate Failed SSH Login Attempts
+3. Verify Log Ingestion in Wazuh
 
-\- Performed multiple SSH login attempts using invalid usernames to simulate brute-force activity.
+Wazuh successfully ingested the failed SSH login events from auth.log.
 
-\- Sample log entries from `/var/log/auth.log`:
+Alerts were decoded and matched by rule ID 5710 (sshd: Attempt to login using a non-existent user).
 
-&nbsp; - Dec 15 18:23:00 UbuntuVM sshd\[1234]: Failed password for invalid user test from 127.0.0.1 port 55555 ssh2
+4. Confirm Alerts in Wazuh Dashboard
 
-&nbsp; - Dec 15 18:23:02 UbuntuVM sshd\[1235]: Failed password for invalid user test2 from 127.0.0.1 port 55556 ssh2
+Navigated to Security Events / Discover in Wazuh Dashboard.
 
-&nbsp; - Dec 15 18:23:04 UbuntuVM sshd\[1236]: Failed password for invalid user test3 from 127.0.0.1 port 55557 ssh2
+Verified all failed login attempts triggered alerts.
 
-\- \*\*Screenshots:\*\*
+Screenshot: Lab3-05_Wazuh Dashboard SSH Failed Login Alert
 
-&nbsp; - `Lab3-02\_Ubuntu\_authlog\_failed\_SSH\_login\_1`
+Outcomes
 
-&nbsp; - `Lab3-03\_Ubuntu\_authlog\_failed\_SSH\_login\_2`
+Linux SSH brute-force simulation completed.
 
-&nbsp; - `Lab3-04\_Ubuntu\_authlog\_failed\_SSH\_login\_3`
+Wazuh detected all failed login attempts successfully.
 
+Dashboard confirmed proper rule configuration and alert ingestion.
 
+Skills Demonstrated
 
-\### 3. Verify Log Ingestion in Wazuh
+MITRE ATT&CK T1078 (Valid Accounts) detection via SSH brute-force simulation.
 
-\- Wazuh successfully ingested the failed SSH login events from `auth.log`.
+Linux log monitoring and analysis (auth.log).
 
-\- Alerts were decoded and rules matched automatically (rule ID `5710` for failed login attempts).
+Wazuh rule triggering, alert verification, and dashboard validation.
 
-
-
-\### 4. Confirm Alerts in Wazuh Dashboard
-
-\- Navigated to \*\*Security Events / Discover\*\* in Wazuh Dashboard.
-
-\- Verified that all failed login attempts triggered alerts.
-
-\- \*\*Screenshot:\*\* `Lab3-05\_Wazuh\_Dashboard\_SSH\_Failed\_Login\_Alert`
-
-
-
-\## Outcomes
-
-\- Linux SSH brute-force simulation completed.
-
-\- Wazuh successfully detected all failed login attempts.
-
-\- Alerts were verified in the dashboard, confirming proper rule configuration and log ingestion.
-
-
-
-\## Skills Demonstrated
-
-\- MITRE ATT\&CK T1078 (Valid Accounts) detection via SSH brute-force simulation.
-
-\- Linux log monitoring and analysis (`auth.log`).
-
-\- Wazuh rule triggering, alert verification, and dashboard validation.
-
-\- End-to-end SIEM correlation for failed login events.
-
+End-to-end SIEM correlation for failed login events.
 
 
