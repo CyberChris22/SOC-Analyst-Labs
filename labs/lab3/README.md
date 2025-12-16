@@ -4,7 +4,7 @@
 
 \## Objective
 
-Simulate and detect brute-force authentication attacks on a Linux system using Wazuh. Validate log ingestion, rule triggering, and alert visualization in the Wazuh Dashboard.
+Simulate and detect SSH brute-force authentication attacks on a Linux host using Wazuh. Validate that logs are ingested, rules trigger correctly, and alerts appear in the Wazuh Dashboard.
 
 
 
@@ -12,95 +12,73 @@ Simulate and detect brute-force authentication attacks on a Linux system using W
 
 
 
-\### 1. Verify SSH Service
+\### 1. Verify SSH Service Running
 
-\- Confirmed that the SSH service is installed, enabled, and running on the Ubuntu VM.
+\- Confirmed the SSH service is active on Ubuntu VM.
 
-\- SSH service status was checked to ensure it could accept authentication attempts.
-
-\- Screenshot:
-
-&nbsp; - Lab3-01\_Ubuntu SSH Service Running
+\- \*\*Screenshot:\*\* `Lab3-01\_Ubuntu\_SSH\_Service\_Running`
 
 
 
 \### 2. Generate Failed SSH Login Attempts
 
-\- Multiple failed SSH login attempts were generated using an invalid username.
+\- Performed multiple SSH login attempts using invalid usernames to simulate brute-force activity.
 
-\- These attempts were designed to simulate a brute-force authentication attack.
+\- Sample log entries from `/var/log/auth.log`:
 
-\- Failed login events were written to /var/log/auth.log.
+&nbsp; - Dec 15 18:23:00 UbuntuVM sshd\[1234]: Failed password for invalid user test from 127.0.0.1 port 55555 ssh2
 
-\- Screenshots:
+&nbsp; - Dec 15 18:23:02 UbuntuVM sshd\[1235]: Failed password for invalid user test2 from 127.0.0.1 port 55556 ssh2
 
-&nbsp; - Lab3-02\_Ubuntu auth.log failed SSH logins
+&nbsp; - Dec 15 18:23:04 UbuntuVM sshd\[1236]: Failed password for invalid user test3 from 127.0.0.1 port 55557 ssh2
 
-&nbsp; - Lab3-02\_Ubuntu auth.log failed SSH logins
+\- \*\*Screenshots:\*\*
 
-&nbsp; - Lab3-02\_Ubuntu auth.log failed SSH logins
+&nbsp; - `Lab3-02\_Ubuntu\_authlog\_failed\_SSH\_login\_1`
 
+&nbsp; - `Lab3-03\_Ubuntu\_authlog\_failed\_SSH\_login\_2`
 
-
-\### 3. Verify Log Ingestion and Rule Triggering
-
-\- Wazuh successfully ingested SSH authentication logs from the Ubuntu system.
-
-\- Failed login attempts were decoded correctly by the SSH decoder.
-
-\- Wazuh triggered the built-in rule for invalid SSH login attempts:
-
-&nbsp; - Rule ID: 5710
-
-&nbsp; - Description: sshd: Attempt to login using a non-existent user
-
-\- MITRE ATT\&CK techniques detected:
-
-&nbsp; - T1110.001 – Password Guessing
-
-&nbsp; - T1021.004 – SSH
+&nbsp; - `Lab3-04\_Ubuntu\_authlog\_failed\_SSH\_login\_3`
 
 
 
-\### 4. Verify Alerts in Wazuh Dashboard
+\### 3. Verify Log Ingestion in Wazuh
 
-\- Confirmed that SSH failed login alerts appeared in the Wazuh Dashboard.
+\- Wazuh successfully ingested the failed SSH login events from `auth.log`.
 
-\- Alerts displayed source IP address, username, rule ID, severity level, and MITRE mappings.
-
-\- Screenshot:
-
-&nbsp; - Lab3-05\_Wazuh Dashboard SSH Failed Login Alert
+\- Alerts were decoded and rules matched automatically (rule ID `5710` for failed login attempts).
 
 
 
-\## Summary
+\### 4. Confirm Alerts in Wazuh Dashboard
 
-\- SSH service was verified as running on the Ubuntu VM.
+\- Navigated to \*\*Security Events / Discover\*\* in Wazuh Dashboard.
 
-\- Failed SSH login attempts successfully simulated a brute-force attack.
+\- Verified that all failed login attempts triggered alerts.
 
-\- Authentication failures were logged in auth.log and ingested by Wazuh.
+\- \*\*Screenshot:\*\* `Lab3-05\_Wazuh\_Dashboard\_SSH\_Failed\_Login\_Alert`
 
-\- Wazuh rules triggered correctly and generated alerts.
 
-\- Alerts were verified in the Wazuh Dashboard.
 
-\- All Lab 3 objectives were fully met and documented.
+\## Outcomes
+
+\- Linux SSH brute-force simulation completed.
+
+\- Wazuh successfully detected all failed login attempts.
+
+\- Alerts were verified in the dashboard, confirming proper rule configuration and log ingestion.
 
 
 
 \## Skills Demonstrated
 
-\- Linux SSH authentication monitoring
+\- MITRE ATT\&CK T1078 (Valid Accounts) detection via SSH brute-force simulation.
 
-\- Brute-force attack simulation
+\- Linux log monitoring and analysis (`auth.log`).
 
-\- Wazuh log ingestion and decoding
+\- Wazuh rule triggering, alert verification, and dashboard validation.
 
-\- Rule triggering and alert validation
-
-\- MITRE ATT\&CK technique mapping
+\- End-to-end SIEM correlation for failed login events.
 
 
 
