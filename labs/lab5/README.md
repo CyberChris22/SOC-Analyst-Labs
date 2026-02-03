@@ -57,28 +57,28 @@ Get-WinEvent -LogName 'Microsoft-Windows-DNS-Client/Operational' | Where-Object 
 
 ### 1. User Account Creation
 
-- lab5-01_UserAccountCreated_60109.png
-- lab5-01_UserAccountCreated_60109_DESKTOP-MHRV979.png
+![User Account Created](Assets/lab5-01_UserAccountCreated_60109.png)  
+![User Account Created on Desktop](Assets/lab5-01_UserAccountCreated_60109_DESKTOP-MHRV979.png)
 
 ### 2. Admin Group & User Account Changes
 
-- lab5-02_AdminGroupChanged_60154.png
-- lab5-02_UserAccountChanged_60110_DESKTOP-MHRV979.png
-- lab5-03_AdminsGroupChanged_60154_DESKTOP-MHRV979.png
-- lab5-03_UserAccountChanged_60110.png
+![Admin Group Changed](Assets/lab5-02_AdminGroupChanged_60154.png)  
+![User Account Changed on Desktop](Assets/lab5-02_UserAccountChanged_60110_DESKTOP-MHRV979.png)  
+![Admins Group Changed](Assets/lab5-03_AdminsGroupChanged_60154_DESKTOP-MHRV979.png)  
+![User Account Changed](Assets/lab5-03_UserAccountChanged_60110.png)
 
 ### 3. Event Correlation
 
-- lab5-04_Correlation_Timeline_AccountCreationToAdmin_DESKTOP-MHRV979.png
-  *(Shows timeline correlation from account creation to admin group assignment.)*
+![Timeline Correlation](Assets/lab5-04_Correlation_Timeline_AccountCreationToAdmin_DESKTOP-MHRV979.png)  
+*(Shows timeline correlation from account creation to admin group assignment.)*
 
 ### 4. DNS / Network Events
 
-- lab5-09_DNS_Timeout_61109_DESKTOP-MHRV979.png
+![DNS Timeout Event](Assets/lab5-09_DNS_Timeout_61109_DESKTOP-MHRV979.png)
 
 ### 5. Logon Events
 
-- lab5-10_LogonEvents_4624_DESKTOP-MHRV979.png
+![Logon Events](Assets/lab5-10_LogonEvents_4624_DESKTOP-MHRV979.png)
 
 ## Lab Notes
 
