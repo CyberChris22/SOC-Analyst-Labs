@@ -1,3 +1,5 @@
+<!-- Force Git to recognize change -->
+
 # Lab 3: Simulating and Detecting Brute-Force Attacks on Linux
 
 ## Objective
