@@ -45,7 +45,7 @@ powershell -ExecutionPolicy Bypass -File $path
 - Observed Wazuh alert:
   - Rule ID: 92200
   - Severity: 6  
-  ![Simulated Malware Script Dropped in Temp Directory (Rule 92200)](Assets/Lab4-04_Simulated_Malware_Script_Dropped_in_Temp_Directory_Rule_92200.png)
+  ![Simulated Malware Script Dropped in Temp Directory (Rule 92200)](Assets/Lab4-04_Simulated_Malware_Script_Rule_92200.png)
 
 #### 2.2 Simulated Executable Drop
 - Created a harmless executable file in Temp:
@@ -56,7 +56,7 @@ $exePath = "$env:USERPROFILE\AppData\Local\Temp\svchost.exe"
 - Observed Wazuh alert:
   - Rule ID: 92213
   - Severity: 10–15  
-  ![Simulated Executable Dropped in Temp Directory (Rule 92213)](Assets/Lab4-05_Simulated_Executable_Dropped_in_Temp_Directory_Rule_92213.png)
+  ![Simulated Executable Dropped in Temp Directory (Rule 92213)](Assets/Lab4-05_Simulated_Executable_Rule_92213.png)
 
 #### 2.3 EICAR Test File (Antivirus Detection)
 - Created the EICAR test string:
@@ -66,7 +66,7 @@ Set-Content -Path "$env:USERPROFILE\Downloads\eicar_test.txt" -Value $eicar -Enc
 ```
 - Microsoft Defender quarantined the test file at 6:16 PM  
 - Wazuh did not generate a high-severity alert, but Defender protection was confirmed  
-  ![Windows Defender Blocking EICAR Test File](Assets/Lab4-06_Windows_Defender_Blocking_EICAR_Test_File.png)
+  ![Windows Defender Blocking EICAR Test File](Assets/Lab4-06_Windows_Defender_Blocking_EICAR.png)
 
 ## Observations
 - Multiple Wazuh alerts were generated for rapid file creation and execution events; this is normal and mirrors real-world malware behavior.
