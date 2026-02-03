@@ -1,5 +1,3 @@
-<!-- Force Git to recognize change -->
-
 # Lab 3: Simulating and Detecting Brute-Force Attacks on Linux
 
 ## Objective
@@ -23,9 +21,8 @@ Dec 15 18:23:08 UbuntuVM sshd[1238]: Failed password for invalid user test5 from
 Dec 15 18:23:10 UbuntuVM sshd[1239]: Failed password for invalid user test6 from 127.0.0.1 port 55560 ssh2
 ```
 - Screenshots:  
-  ![Ubuntu auth.log failed SSH logins](Assets/Lab3-02_Ubuntu_auth_log_failed_SSH_logins.png)  
-  ![Ubuntu auth.log failed SSH logins](Assets/Lab3-03_Ubuntu_auth_log_failed_SSH_logins.png)  
-  ![Ubuntu auth.log failed SSH logins](Assets/Lab3-04_Ubuntu_auth_log_failed_SSH_logins.png)  
+  ![Ubuntu Wazuh Alerts SSH Failed Logins](Assets/Lab3-03_Ubuntu_Wazuh_Alerts_SSH_Failed_Logins.png)  
+  ![Wazuh Logtest SSH Failed Login](Assets/Lab3-04_Wazuh_Logtest_SSH_Failed_Login.png)  
 
 ### 3. Verify Log Ingestion in Wazuh
 - Wazuh successfully ingested the failed SSH login events from `auth.log`.  
